@@ -15,21 +15,37 @@ namespace Tickets.ViewModels
         private TicketModel _selectedTicket;
         private BindableCollection<TicketModel> _tickets = new BindableCollection<TicketModel>();
         private string _ticketName;
+        private BindableCollection<TicketModel> _bList = new BindableCollection<TicketModel>();
         public ShellViewModel()
         {
             Tickets.Add(new TicketModel { TicketName = "Adult", Price = 10 });
-            Tickets.Add(new TicketModel { TicketName = "Member", Price = 7.5 });
+            Tickets.Add(new TicketModel { TicketName = "Member", Price = 7.50 });
             Tickets.Add(new TicketModel { TicketName = "Child", Price = 5 });
+
+            BList.Add(new TicketModel { TicketName = "Adult", Price = 10 });
+
+
         }
 
-        
 
-        public  string TicketName
+
+        public string TicketName
         {
             get { return _ticketName; }
             set { _ticketName = value; }
         }
 
+        public BindableCollection<TicketModel> BList
+        {
+            get { return _bList; }
+            set { _bList = value; }
+        }
+
+        public BindableCollection<TicketModel> Tickets
+        {
+            get { return _tickets; }
+            set { _tickets = value; }
+        }
         public string FirstName
         {
             get
@@ -63,11 +79,7 @@ namespace Tickets.ViewModels
             get { return $"{ FirstName } {LastName}"; }
         }
 
-        public BindableCollection<TicketModel> Tickets
-        {
-            get { return _tickets; }
-            set { _tickets = value; }
-        }
+        
 
         public TicketModel SelectedTicket
         {
@@ -88,19 +100,17 @@ namespace Tickets.ViewModels
             return !String.IsNullOrWhiteSpace(firstName) || !String.IsNullOrWhiteSpace(lastName);
         }
 
+        public void AddToOrder()
+
+        {
+            BList.Add(SelectedTicket);
+        }
+
         public void ClearText(string firstName, string lastName)
         {
             FirstName = "";
             LastName = "";
         }
-
-        public double PriceToDisplay
-        {
-            get { return SelectedTicket.Price; }
-            set
-            {
-                SelectedTicket.Price = value;
-            }
-        }
+    }
 }
  

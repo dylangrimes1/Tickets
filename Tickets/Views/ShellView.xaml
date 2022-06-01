@@ -13,6 +13,11 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
@@ -23,29 +28,56 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-        
-        <!-- Row 1 -->
-        <TextBlock Text="{Binding Path=FullName, Mode=OneWay}" Grid.Row="1" 
-                   Grid.Column="1" Grid.ColumnSpan="2"></TextBlock>
+
+
+        <!--Row 1 -->
+        <TextBlock MinWidth="100" Grid.Row="1" Grid.Column="1">Enter Full Name:</TextBlock>
 
         <!-- Row 2 -->
         <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" x:Name="FirstName"></TextBox>
         <TextBox MinWidth="100" Grid.Row="2" Grid.Column="2" x:Name="LastName"></TextBox>
 
+        <TextBlock Grid.Row="2" Grid.Column="3" Text="         "/>
+        <TextBlock Grid.Row="2" Grid.Column="4" Text="Your Name: "/>
+        <TextBlock Text="{Binding Path=FullName, Mode=OneWay}" Grid.Row="2"
+                   Grid.Column="5" Grid.ColumnSpan="2"></TextBlock>
         <!-- Row 3 -->
         <ComboBox Grid.Row="3" Grid.Column="1" x:Name="Tickets"
                   SelectedItem="{Binding Path=SelectedTicket, Mode=OneWayToSource}"
                   DisplayMemberPath="TicketName" />
-<TextBlock Grid.Row="3" Grid.Column="2" x:Name="PriceToDisplay" Text="{Binding Path=SelectedTicket_Price, StringFormat='Price £{0}'}" />
-        
-        <!-- Row 4-->
-        <Button x:Name="ClearText" Grid.Row="4" Grid.Column="1">Clear</Button>
 
-        <!-- Row 6-->
-        <ContentControl Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="5"
+        <TextBlock Grid.Row="3" Grid.Column="3" Text=" "/>
+        <TextBlock Grid.Row="3" Grid.Column="5" x:Name="SelectedTicket_Price" />
+        <TextBlock Grid.Row="3" Grid.Column="4" Text="The Price is: £"/>
+        <!-- Row 4-->
+
+        <Button Grid.Row="4" Grid.Column="1">Add Front Row</Button>
+
+
+        <!-- Row 5 -->
+        <Button Grid.Row="5" Grid.Column="1">Add Tour of Grounds</Button>
+        <!-- Row 6 -->
+        <Button Grid.Row="6" Grid.Column="1">Add Pie and Pint</Button>
+
+
+
+        <!-- Row 7-->
+        <Button x:Name="ClearText" Grid.Row="7" Grid.Column="1">Clear</Button>
+        <ContentControl Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="5"
                         x:Name="ActiveItem" />
+
+        <Button x:Name="AddToOrder" Grid.Row="7" Grid.Column="2">Add To Basket</Button>
+        <ListBox Grid.Row="7" Grid.Column="3" x:Name="BList"
+                  SelectedItem="{Binding Path=BList, Mode=OneWayToSource}"
+                  DisplayMemberPath="TicketName" />
+
     </Grid>
 </Window>
