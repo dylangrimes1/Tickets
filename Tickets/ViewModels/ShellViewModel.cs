@@ -16,13 +16,12 @@ namespace Tickets.ViewModels
         private BindableCollection<TicketModel> _tickets = new BindableCollection<TicketModel>();
         private string _ticketName;
         private BindableCollection<TicketModel> _bList = new BindableCollection<TicketModel>();
+        private BindableCollection<TicketModel> _pList = new BindableCollection<TicketModel>();
         public ShellViewModel()
         {
-            Tickets.Add(new TicketModel { TicketName = "Adult", Price = 10 });
-            Tickets.Add(new TicketModel { TicketName = "Member", Price = 7.50 });
-            Tickets.Add(new TicketModel { TicketName = "Child", Price = 5 });
-
-            BList.Add(new TicketModel { TicketName = "Adult", Price = 10 });
+            Tickets.Add(new TicketModel { TicketName = "Adult (£10)", Price = 10 });
+            Tickets.Add(new TicketModel { TicketName = "Member (£7.50)", Price = 7.50 });
+            Tickets.Add(new TicketModel { TicketName = "Child (£5)", Price = 5 });
 
 
         }
@@ -39,6 +38,12 @@ namespace Tickets.ViewModels
         {
             get { return _bList; }
             set { _bList = value; }
+        }
+
+        public BindableCollection<TicketModel> PList
+        {
+            get { return _pList; }
+            set { _pList = value; }
         }
 
         public BindableCollection<TicketModel> Tickets
@@ -104,12 +109,31 @@ namespace Tickets.ViewModels
 
         {
             BList.Add(SelectedTicket);
+            PList.Add(SelectedTicket);
         }
 
         public void ClearText(string firstName, string lastName)
         {
             FirstName = "";
             LastName = "";
+        }
+
+        public void PiePint()
+        {
+            BList.Add(new TicketModel { TicketName = "Pie + Pint (£5)", Price = 5 });
+            PList.Add(new TicketModel { TicketName = "Pie + Pint (£5)", Price = 5 });
+        }
+
+        public void Tour()
+        {
+            BList.Add(new TicketModel { TicketName = "Tour Of Grounds (£3)", Price = 3 });
+            PList.Add(new TicketModel { TicketName = "Tour Of Grounds (£3)", Price = 3 });
+        }
+
+        public void FrontRow()
+        {
+            BList.Add(new TicketModel { TicketName = "Front Row (£8)", Price = 8 });
+            PList.Add(new TicketModel { TicketName = "Front Row (£8)", Price = 8 });
         }
     }
 }

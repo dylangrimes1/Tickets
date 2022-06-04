@@ -18,6 +18,10 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
@@ -44,40 +48,30 @@
         <!-- Row 2 -->
         <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" x:Name="FirstName"></TextBox>
         <TextBox MinWidth="100" Grid.Row="2" Grid.Column="2" x:Name="LastName"></TextBox>
-
-        <TextBlock Grid.Row="2" Grid.Column="3" Text="         "/>
-        <TextBlock Grid.Row="2" Grid.Column="4" Text="Your Name: "/>
-        <TextBlock Text="{Binding Path=FullName, Mode=OneWay}" Grid.Row="2"
-                   Grid.Column="5" Grid.ColumnSpan="2"></TextBlock>
+        <TextBlock Text="{Binding Path=FullName, Mode=OneWay}" Grid.Row="7"
+                   Grid.Column="4" Grid.ColumnSpan="2"></TextBlock>
         <!-- Row 3 -->
         <ComboBox Grid.Row="3" Grid.Column="1" x:Name="Tickets"
                   SelectedItem="{Binding Path=SelectedTicket, Mode=OneWayToSource}"
                   DisplayMemberPath="TicketName" />
-
-        <TextBlock Grid.Row="3" Grid.Column="3" Text=" "/>
-        <TextBlock Grid.Row="3" Grid.Column="5" x:Name="SelectedTicket_Price" />
-        <TextBlock Grid.Row="3" Grid.Column="4" Text="The Price is: £"/>
+        <Button x:Name="AddToOrder" Grid.Row="3" Grid.Column="2">Add To Basket</Button>
         <!-- Row 4-->
-
-        <Button Grid.Row="4" Grid.Column="1">Add Front Row</Button>
-
-
+        <Button x:Name="FrontRow" Grid.Row="4" Grid.Column="1">Add Front Row</Button>
         <!-- Row 5 -->
-        <Button Grid.Row="5" Grid.Column="1">Add Tour of Grounds</Button>
+        <Button x:Name="Tour" Grid.Row="5" Grid.Column="1">Add Tour of Grounds</Button>
         <!-- Row 6 -->
-        <Button Grid.Row="6" Grid.Column="1">Add Pie and Pint</Button>
-
-
+        <Button x:Name="PiePint" Grid.Row="6" Grid.Column="1">Add Pie and Pint</Button>
 
         <!-- Row 7-->
         <Button x:Name="ClearText" Grid.Row="7" Grid.Column="1">Clear</Button>
         <ContentControl Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="5"
                         x:Name="ActiveItem" />
 
-        <Button x:Name="AddToOrder" Grid.Row="7" Grid.Column="2">Add To Basket</Button>
-        <ListBox Grid.Row="7" Grid.Column="3" x:Name="BList"
-                  SelectedItem="{Binding Path=BList, Mode=OneWayToSource}"
-                  DisplayMemberPath="TicketName" />
+
+        <ListBox Grid.Row="8" Grid.Column="4" x:Name="BList"
+                  DisplayMemberPath="TicketName"/>
+
+        <TextBlock Grid.Row="9" Grid.Column="4"/>
 
     </Grid>
 </Window>
