@@ -12,5 +12,7 @@ namespace Tickets.Models
         public  string LastName { get; set; }
         public string TicketName { get; internal set; }
         public double Price { get; internal set; }
+
+        public double TotalPrice = 0;
     }
 }

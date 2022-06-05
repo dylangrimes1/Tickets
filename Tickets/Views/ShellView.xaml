@@ -48,19 +48,19 @@
         <!-- Row 2 -->
         <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" x:Name="FirstName"></TextBox>
         <TextBox MinWidth="100" Grid.Row="2" Grid.Column="2" x:Name="LastName"></TextBox>
-        <TextBlock Text="{Binding Path=FullName, Mode=OneWay}" Grid.Row="7"
-                   Grid.Column="4" Grid.ColumnSpan="2"></TextBlock>
+      <!--  <TextBlock Text="{Binding Path=FullName, Mode=OneWay}" Grid.Row="7"
+                   Grid.Column="4" Grid.ColumnSpan="2"></TextBlock> -->
         <!-- Row 3 -->
         <ComboBox Grid.Row="3" Grid.Column="1" x:Name="Tickets"
                   SelectedItem="{Binding Path=SelectedTicket, Mode=OneWayToSource}"
                   DisplayMemberPath="TicketName" />
         <Button x:Name="AddToOrder" Grid.Row="3" Grid.Column="2">Add To Basket</Button>
         <!-- Row 4-->
-        <Button x:Name="FrontRow" Grid.Row="4" Grid.Column="1">Add Front Row</Button>
+        <Button x:Name="FrontRow" Grid.Row="4" Grid.Column="1">Add Front Row (£8)</Button>
         <!-- Row 5 -->
-        <Button x:Name="Tour" Grid.Row="5" Grid.Column="1">Add Tour of Grounds</Button>
+        <Button x:Name="Tour" Grid.Row="5" Grid.Column="1">Add Tour of Grounds (£3)</Button>
         <!-- Row 6 -->
-        <Button x:Name="PiePint" Grid.Row="6" Grid.Column="1">Add Pie and Pint</Button>
+        <Button x:Name="PiePint" Grid.Row="6" Grid.Column="1">Add Pie and Pint (£5)</Button>
 
         <!-- Row 7-->
         <Button x:Name="ClearText" Grid.Row="7" Grid.Column="1">Clear</Button>
@@ -70,8 +70,10 @@
 
         <ListBox Grid.Row="8" Grid.Column="4" x:Name="BList"
                   DisplayMemberPath="TicketName"/>
-
-        <TextBlock Grid.Row="9" Grid.Column="4"/>
-
+        <TextBlock Grid.Row="8" Grid.Column="5" Text="Total = £ " />
+        <TextBlock x:Name="TotalPrice" Grid.Row="8" Grid.Column="6" />
+        <TextBlock Text="{Binding Path=FullName, Mode=OneWay}" Visibility="{Binding NameDisplayed}" Grid.Row="7"
+                   Grid.Column="4" Grid.ColumnSpan="5"></TextBlock>
+        <Button x:Name="Confirmed" Grid.Row="9" Grid.Column="4">Confirm Order</Button>
     </Grid>
 </Window>

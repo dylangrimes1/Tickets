@@ -17,15 +17,52 @@ namespace Tickets.ViewModels
         private string _ticketName;
         private BindableCollection<TicketModel> _bList = new BindableCollection<TicketModel>();
         private BindableCollection<TicketModel> _pList = new BindableCollection<TicketModel>();
+        private double _totalPrice = 0;
+        private string _nameDisplayed = "Hidden";
+        private string _orderDisplayed = "Hidden";
+        private string _orderConfirmed = "Thank you, your order has been confirmed";
         public ShellViewModel()
         {
             Tickets.Add(new TicketModel { TicketName = "Adult (£10)", Price = 10 });
             Tickets.Add(new TicketModel { TicketName = "Member (£7.50)", Price = 7.50 });
             Tickets.Add(new TicketModel { TicketName = "Child (£5)", Price = 5 });
-
-
         }
 
+        public string NameDisplayed //Public variant
+        {
+            get { return _nameDisplayed; }
+            set
+            {
+                _nameDisplayed = value;
+                NotifyOfPropertyChange(() => NameDisplayed);
+            }
+        }
+
+        public string OrderDisplayed //Public variant
+        {
+            get { return _nameDisplayed; }
+            set
+            {
+                _orderDisplayed = value;
+                NotifyOfPropertyChange(() => OrderDisplayed);
+            }
+        }
+
+        public string OrderConfirmed //Public variant
+        {
+            get { return _orderDisplayed; }
+            set
+            {
+                _orderConfirmed = value;
+                NotifyOfPropertyChange(() => OrderConfirmed);
+            }
+        }
+
+        public double TotalPrice
+        {
+            get { return _totalPrice; }
+            set { _totalPrice = value; }
+        }
 
 
         public string TicketName
@@ -110,6 +147,8 @@ namespace Tickets.ViewModels
         {
             BList.Add(SelectedTicket);
             PList.Add(SelectedTicket);
+            TotalPrice += SelectedTicket.Price;
+            NotifyOfPropertyChange(() => TotalPrice);
         }
 
         public void ClearText(string firstName, string lastName)
@@ -122,18 +161,30 @@ namespace Tickets.ViewModels
         {
             BList.Add(new TicketModel { TicketName = "Pie + Pint (£5)", Price = 5 });
             PList.Add(new TicketModel { TicketName = "Pie + Pint (£5)", Price = 5 });
+            TotalPrice += 5;
+            NotifyOfPropertyChange(() => TotalPrice);
         }
 
         public void Tour()
         {
             BList.Add(new TicketModel { TicketName = "Tour Of Grounds (£3)", Price = 3 });
             PList.Add(new TicketModel { TicketName = "Tour Of Grounds (£3)", Price = 3 });
+            TotalPrice += 3;
+            NotifyOfPropertyChange(() => TotalPrice);
         }
 
         public void FrontRow()
         {
             BList.Add(new TicketModel { TicketName = "Front Row (£8)", Price = 8 });
             PList.Add(new TicketModel { TicketName = "Front Row (£8)", Price = 8 });
+            TotalPrice += 8;
+            NotifyOfPropertyChange(() => TotalPrice);
+        }
+
+        public void Confirmed()
+        {
+            NameDisplayed = "Visible";
+            OrderDisplayed = "Visible";
         }
     }
 }
